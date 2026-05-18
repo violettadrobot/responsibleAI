@@ -87,10 +87,12 @@ export default function EventSignupPage() {
               <div className="meta-item">
                 <span>Virtual 60 minute training, June 10 from 12pm-1pm EST</span>
               </div>
-              <div className="meta-item">
+              <div className="meta-item speaker-item">
+                <img src="/images/violetta.jpg" alt="Violetta Drobot" className="speaker-image" />
                 <a href="https://www.linkedin.com/in/violetta-drobot/" target="_blank" rel="noopener noreferrer" className="meta-link">Violetta Drobot - AI Native HR Leader & Coach</a>
               </div>
-              <div className="meta-item">
+              <div className="meta-item speaker-item">
+                <img src="/images/melisa.jpg" alt="Melisa DiPietro" className="speaker-image" />
                 <a href="https://www.linkedin.com/in/meldip/" target="_blank" rel="noopener noreferrer" className="meta-link">Melisa DiPietro - Founder & Principal Consult at FlockFir</a>
               </div>
             </div>
