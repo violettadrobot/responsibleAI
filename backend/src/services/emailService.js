@@ -42,50 +42,75 @@ export const sendConfirmationEmail = async (attendeeName, email, teamsLink) => {
     <html>
       <head>
         <style>
-          body { font-family: Arial, sans-serif; color: #333; line-height: 1.6; }
-          .container { max-width: 600px; margin: 0 auto; padding: 20px; }
-          .header { background-color: #4a5568; color: white; padding: 20px; text-align: center; border-radius: 5px; }
-          .content { padding: 20px; border: 1px solid #e0e0e0; border-radius: 5px; margin-top: 20px; }
-          .section { margin: 20px 0; }
-          .button { display: inline-block; background-color: #4a5568; color: white; padding: 12px 30px; text-decoration: none; border-radius: 5px; margin-top: 15px; }
-          .footer { margin-top: 30px; font-size: 12px; color: #666; text-align: center; }
+          @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap');
+
+          body { font-family: 'Inter', sans-serif; color: #2d3748; line-height: 1.6; background-color: #f7fafc; }
+          .container { max-width: 600px; margin: 0 auto; padding: 0; }
+          .header { background: linear-gradient(135deg, #00d4ff 0%, #7c3aed 100%); color: white; padding: 40px 20px; text-align: center; }
+          .header h1 { font-family: 'Playfair Display', serif; font-size: 28px; font-weight: 400; margin: 0 0 10px 0; letter-spacing: 0.5px; }
+          .header p { font-size: 14px; margin: 0; opacity: 0.95; }
+          .content { padding: 40px 20px; background-color: white; }
+          .section { margin: 25px 0; }
+          .section h3 { font-family: 'Inter', sans-serif; font-size: 16px; font-weight: 600; color: #0f172a; margin: 20px 0 12px 0; }
+          .section p { font-size: 14px; color: #4a5568; margin: 10px 0; }
+          .section ul { list-style: none; padding: 0; margin: 12px 0; }
+          .section li { font-size: 14px; color: #4a5568; margin: 8px 0; padding-left: 20px; position: relative; }
+          .section li:before { content: "▸"; position: absolute; left: 0; color: #7c3aed; }
+          .button { display: inline-block; background: linear-gradient(135deg, #00d4ff 0%, #7c3aed 100%); color: white; padding: 12px 30px; text-decoration: none; border-radius: 6px; margin-top: 15px; font-weight: 600; font-size: 14px; }
+          .button:hover { opacity: 0.95; }
+          .footer { margin-top: 30px; padding-top: 20px; border-top: 1px solid #e2e8f0; font-size: 12px; color: #718096; text-align: center; }
+          .divider { height: 1px; background-color: #e2e8f0; margin: 25px 0; }
         </style>
       </head>
       <body>
         <div class="container">
           <div class="header">
-            <h1>Welcome to the Workshop!</h1>
-            <p>Responsible AI in HR: From Hype to Accountability</p>
+            <h1>Responsible AI in HR</h1>
+            <p>From Hype to Accountability</p>
           </div>
 
           <div class="content">
             <div class="section">
-              <p>Hi ${attendeeName},</p>
-              <p>Thank you for registering for <strong>"Responsible AI in HR: From Hype to Accountability"</strong>! We're excited to have you join us for this hands-on, practical workshop.</p>
+              <p>Hello ${attendeeName},</p>
+              <p>Thank you for registering for our workshop on Responsible AI in HR. We're pleased to confirm your spot and look forward to exploring practical frameworks for ethical AI governance with you.</p>
+            </div>
+
+            <div class="divider"></div>
+
+            <div class="section">
+              <h3>Workshop Details</h3>
+              <p><strong>Title:</strong> Responsible AI in HR: From Hype to Accountability</p>
+              <p><strong>Format:</strong> Virtual via Microsoft Teams</p>
+              <p><strong>Date & Time:</strong> June 10, 2026 • 12:00 PM – 1:00 PM EST</p>
+              <p><strong>Duration:</strong> 60 minutes</p>
             </div>
 
             <div class="section">
-              <h3>Workshop Details:</h3>
+              <h3>What You'll Learn</h3>
               <ul>
-                <li><strong>Workshop:</strong> Responsible AI in HR: From Hype to Accountability</li>
-                <li><strong>Format:</strong> Virtual (Microsoft Teams)</li>
-                <li><strong>What You'll Learn:</strong> Real governance frameworks, risk identification, and practical accountability strategies</li>
+                <li>Why AI implementations fail in HR—and what really matters</li>
+                <li>Critical risk areas: hiring, compensation, performance management, and employee surveys</li>
+                <li>How to build accountability frameworks that stick</li>
+                <li>A practical pressure-testing framework you can apply immediately</li>
               </ul>
             </div>
 
             <div class="section">
-              <h3>Join the Workshop:</h3>
-              <p>Click the link below to join the Microsoft Teams meeting:</p>
-              <a href="${teamsLink}" class="button">Join Teams Meeting</a>
+              <h3>Join the Workshop</h3>
+              <p>Click the button below to join the Microsoft Teams meeting:</p>
+              <center>
+                <a href="${teamsLink}" class="button">Join Teams Meeting</a>
+              </center>
+              <p style="font-size: 12px; color: #718096; margin-top: 15px;">Or copy and paste this link in your browser: <br><span style="word-break: break-all;">${teamsLink}</span></p>
             </div>
 
             <div class="section">
-              <p>If you have any questions before the workshop, please don't hesitate to reach out.</p>
-              <p>We look forward to seeing you there!</p>
+              <p>If you have any questions or need technical support before the workshop, please reach out to us directly.</p>
             </div>
 
             <div class="footer">
-              <p>This is an automated confirmation email. Please do not reply to this message.</p>
+              <p style="margin: 0;">This is an automated confirmation. Please do not reply to this email.</p>
+              <p style="margin: 10px 0 0 0; font-size: 11px;">We respect your privacy. Your information is used solely for event communication.</p>
             </div>
           </div>
         </div>
