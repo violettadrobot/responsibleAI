@@ -44,22 +44,22 @@ export const sendConfirmationEmail = async (attendeeName, email, teamsLink) => {
         <style>
           @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap');
 
-          body { font-family: 'Inter', sans-serif; color: #2d3748; line-height: 1.6; background-color: #f7fafc; }
+          body { font-family: 'Inter', sans-serif; color: #b8c5d6; line-height: 1.6; background-color: #0f172a; }
           .container { max-width: 600px; margin: 0 auto; padding: 0; }
-          .header { background-color: #1a3a52; color: white; padding: 40px 20px; text-align: center; }
-          .header h1 { font-family: 'Playfair Display', serif; font-size: 28px; font-weight: 400; margin: 0 0 10px 0; letter-spacing: 0.5px; }
-          .header p { font-size: 14px; margin: 0; opacity: 0.95; }
-          .content { padding: 40px 20px; background-color: white; }
+          .header { background-color: #0f172a; color: white; padding: 40px 20px; text-align: center; border-bottom: 2px solid #00d4ff; }
+          .header h1 { font-family: 'Playfair Display', serif; font-size: 32px; font-weight: 400; margin: 0 0 8px 0; letter-spacing: 0.5px; color: #00d4ff; }
+          .header p { font-size: 16px; margin: 0; color: #7c3aed; font-weight: 500; }
+          .content { padding: 40px 20px; background-color: #0f172a; }
           .section { margin: 25px 0; }
-          .section h3 { font-family: 'Inter', sans-serif; font-size: 16px; font-weight: 600; color: #0f172a; margin: 20px 0 12px 0; }
-          .section p { font-size: 14px; color: #4a5568; margin: 10px 0; }
+          .section h3 { font-family: 'Playfair Display', serif; font-size: 18px; font-weight: 400; color: #00d4ff; margin: 20px 0 12px 0; letter-spacing: 0.3px; }
+          .section p { font-size: 14px; color: #b8c5d6; margin: 10px 0; line-height: 1.6; }
           .section ul { list-style: none; padding: 0; margin: 12px 0; }
-          .section li { font-size: 14px; color: #4a5568; margin: 8px 0; padding-left: 20px; position: relative; }
-          .section li:before { content: "▸"; position: absolute; left: 0; color: #7c3aed; }
-          .button { display: inline-block; background: linear-gradient(135deg, #00d4ff 0%, #7c3aed 100%); color: white; padding: 12px 30px; text-decoration: none; border-radius: 6px; margin-top: 15px; font-weight: 600; font-size: 14px; }
+          .section li { font-size: 14px; color: #b8c5d6; margin: 8px 0; padding-left: 20px; position: relative; }
+          .section li:before { content: "▸"; position: absolute; left: 0; color: #7c3aed; font-weight: bold; }
+          .button { display: inline-block; background: linear-gradient(135deg, #00d4ff 0%, #7c3aed 100%); color: #0f172a; padding: 12px 30px; text-decoration: none; border-radius: 6px; margin-top: 15px; font-weight: 600; font-size: 14px; }
           .button:hover { opacity: 0.95; }
-          .footer { margin-top: 30px; padding-top: 20px; border-top: 1px solid #e2e8f0; font-size: 12px; color: #718096; text-align: center; }
-          .divider { height: 1px; background-color: #e2e8f0; margin: 25px 0; }
+          .footer { margin-top: 30px; padding-top: 20px; border-top: 1px solid rgba(0, 212, 255, 0.2); font-size: 12px; color: #8b98b0; text-align: center; }
+          .divider { height: 1px; background-color: rgba(0, 212, 255, 0.2); margin: 25px 0; }
         </style>
       </head>
       <body>
