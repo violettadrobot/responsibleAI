@@ -225,6 +225,24 @@ export default function EventSignupPage() {
           </div>
         </div>
       </div>
+
+      {/* Footer Credit */}
+      <div style={{
+        marginTop: 'auto',
+        padding: '40px 20px',
+        textAlign: 'center',
+        borderTop: '1px solid rgba(255, 255, 255, 0.1)',
+        color: '#8b98b0',
+        fontSize: '14px'
+      }}>
+        <p style={{ margin: 0 }}>
+          Designed by <strong>Violetta Drobot</strong> •
+          <a href="https://www.linkedin.com/in/violetta-drobot/" target="_blank" rel="noopener noreferrer"
+             style={{ color: '#00d4ff', textDecoration: 'none', marginLeft: '6px' }}>
+            LinkedIn
+          </a>
+        </p>
+      </div>
     </div>
   )
 }
