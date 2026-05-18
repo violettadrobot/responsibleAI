@@ -47,8 +47,8 @@ export const sendConfirmationEmail = async (attendeeName, email, teamsLink) => {
           body { font-family: 'Inter', sans-serif; color: #b8c5d6; line-height: 1.6; background-color: #0f172a; }
           .container { max-width: 600px; margin: 0 auto; padding: 0; }
           .header { background-color: #0f172a; color: white; padding: 40px 20px; text-align: center; border-bottom: 2px solid #00d4ff; }
-          .header h1 { font-family: 'Playfair Display', serif; font-size: 32px; font-weight: 400; margin: 0 0 8px 0; letter-spacing: 0.5px; color: #00d4ff; }
-          .header p { font-size: 16px; margin: 0; color: #7c3aed; font-weight: 500; }
+          .header h1 { font-family: 'Playfair Display', serif; font-size: 52px; font-weight: 400; margin: 0 0 12px 0; letter-spacing: 0px; color: #00d4ff; line-height: 1.2; }
+          .header p { font-size: 24px; margin: 0; color: #7c3aed; font-weight: 500; font-family: 'Playfair Display', serif; letter-spacing: 0px; }
           .content { padding: 40px 20px; background-color: #0f172a; }
           .section { margin: 25px 0; }
           .section h3 { font-family: 'Playfair Display', serif; font-size: 18px; font-weight: 400; color: #00d4ff; margin: 20px 0 12px 0; letter-spacing: 0.3px; }
