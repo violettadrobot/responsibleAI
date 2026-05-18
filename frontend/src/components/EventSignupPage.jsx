@@ -119,6 +119,10 @@ export default function EventSignupPage() {
                   <div className="success-icon">✓</div>
                   <h3>Registration Successful!</h3>
                   <p>{message}</p>
+                  <p style={{ fontSize: '14px', marginTop: '15px', opacity: 0.9 }}>
+                    Check your inbox for a confirmation email from:<br/>
+                    <strong>violettadrobot@11095009.brevosend.com</strong>
+                  </p>
                   <button
                     className="button button-secondary"
                     onClick={() => setStatus('idle')}
