@@ -56,7 +56,7 @@ export const sendConfirmationEmail = async (attendeeName, email, teamsLink) => {
           .section ul { list-style: none; padding: 0; margin: 12px 0; }
           .section li { font-size: 14px; color: #b8c5d6; margin: 8px 0; padding-left: 20px; position: relative; }
           .section li:before { content: "▸"; position: absolute; left: 0; color: #7c3aed; font-weight: bold; }
-          .button { display: inline-block; background: linear-gradient(135deg, #00d4ff 0%, #7c3aed 100%); color: #0f172a; padding: 12px 30px; text-decoration: none; border-radius: 6px; margin-top: 15px; font-weight: 600; font-size: 14px; }
+          .button { display: inline-block; background: linear-gradient(135deg, #00d4ff 0%, #7c3aed 100%); color: #ffffff; padding: 16px 40px; text-decoration: none; border-radius: 8px; margin-top: 15px; font-weight: 800; font-size: 16px; border: 3px solid #ffffff; box-shadow: 0 4px 15px rgba(0, 212, 255, 0.4); }
           .button:hover { opacity: 0.95; }
           .footer { margin-top: 30px; padding-top: 20px; border-top: 1px solid rgba(0, 212, 255, 0.2); font-size: 12px; color: #8b98b0; text-align: center; }
           .divider { height: 1px; background-color: rgba(0, 212, 255, 0.2); margin: 25px 0; }
