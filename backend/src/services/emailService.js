@@ -102,7 +102,8 @@ export const sendConfirmationEmail = async (attendeeName, email, teamsLink) => {
                 <a href="${teamsLink}" class="button">Join Teams Meeting</a>
               </center>
               <p style="font-size: 14px; color: #ffffff; margin-top: 20px; margin-bottom: 8px; font-weight: 500;">Or copy and paste this link in your browser:</p>
-              <p style="font-size: 12px; color: #ffffff; margin-top: 0; background-color: rgba(0, 0, 0, 0.5); padding: 12px; border-radius: 4px; font-family: 'Courier New', monospace; border: 1px solid #00d4ff; overflow-wrap: break-word; white-space: normal;">${teamsLink}</p>
+              <p style="font-size: 11px; color: #b8c5d6; margin-top: 15px; margin-bottom: 8px;">Full link:</p>
+              <a href="${teamsLink}" style="display: block; font-size: 12px; color: #00d4ff; background-color: rgba(0, 0, 0, 0.5); padding: 12px; border-radius: 4px; border: 1px solid #00d4ff; text-decoration: none; font-family: 'Courier New', monospace; word-break: break-all; line-height: 1.4;">${teamsLink}</a>
             </div>
 
             <div class="section">
