@@ -95,14 +95,14 @@ export const sendConfirmationEmail = async (attendeeName, email, teamsLink) => {
               </ul>
             </div>
 
-            <div class="section" style="background-color: rgba(0, 212, 255, 0.1); padding: 20px; border-radius: 6px; border-left: 4px solid #00d4ff; margin: 30px 0;">
-              <h3 style="margin-top: 0;">Join the Workshop</h3>
-              <p style="color: #ffffff; font-size: 15px; margin-bottom: 20px;">Click the button below to join the Microsoft Teams meeting:</p>
+            <div class="section" style="background-color: rgba(0, 212, 255, 0.15); padding: 20px; border-radius: 6px; border-left: 4px solid #00d4ff; margin: 30px 0;">
+              <h3 style="margin-top: 0; color: #ffffff;">Join the Workshop</h3>
+              <p style="color: #ffffff; font-size: 15px; margin-bottom: 20px; font-weight: 500;">Click the button below to join the Microsoft Teams meeting:</p>
               <center>
                 <a href="${teamsLink}" class="button">Join Teams Meeting</a>
               </center>
-              <p style="font-size: 14px; color: #b8c5d6; margin-top: 20px; margin-bottom: 0;">Or copy and paste this link in your browser:</p>
-              <p style="font-size: 13px; color: #00d4ff; word-break: break-all; margin-top: 8px; background-color: rgba(0, 0, 0, 0.3); padding: 12px; border-radius: 4px; font-family: monospace;">${teamsLink}</p>
+              <p style="font-size: 14px; color: #ffffff; margin-top: 20px; margin-bottom: 8px; font-weight: 500;">Or copy and paste this link in your browser:</p>
+              <p style="font-size: 13px; color: #ffffff; word-break: break-all; margin-top: 0; background-color: rgba(0, 0, 0, 0.5); padding: 12px; border-radius: 4px; font-family: monospace; border: 1px solid #00d4ff;">${teamsLink}</p>
             </div>
 
             <div class="section">
