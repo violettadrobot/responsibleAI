@@ -93,7 +93,7 @@ export default function EventSignupPage() {
               </div>
               <div className="meta-item speaker-item">
                 <img src="/images/melisa.jpg" alt="Melisa DiPietro" className="speaker-image" />
-                <a href="https://www.linkedin.com/in/meldip/" target="_blank" rel="noopener noreferrer" className="meta-link">Melisa DiPietro - Founder & Principal Consult at FlocknFi</a>
+                <a href="https://www.linkedin.com/in/meldip/" target="_blank" rel="noopener noreferrer" className="meta-link">Melisa DiPietro - Founder & Principal Consult at FlocknFir</a>
               </div>
             </div>
 
