@@ -2,23 +2,38 @@ import axios from 'axios';
 
 const BREVO_API_URL = 'https://api.brevo.com/v3/smtp/email';
 
-// Generate ICS calendar file
+// Generate ICS calendar file with Eastern Time timezone
 const generateCalendarInvite = (teamsLink) => {
-  // June 10, 2026, 12:00 PM - 1:00 PM EST
-  const startTime = '20260610T120000';
-  const endTime = '20260610T130000';
-
+  // June 10, 2026, 12:00 PM - 1:00 PM Eastern Time (EDT)
   const icsContent = `BEGIN:VCALENDAR
 VERSION:2.0
 PRODID:-//Workshop Registration//Responsible AI in HR//EN
 CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VTIMEZONE
+TZID:America/New_York
+BEGIN:DAYLIGHT
+TZOFFSETFROM:-0500
+TZOFFSETTO:-0400
+TZNAME:EDT
+DTSTART:19700308T020000
+RRULE:FREQ=YEARLY;BYMONTH=3;BYDAY=2SU
+END:DAYLIGHT
+BEGIN:STANDARD
+TZOFFSETFROM:-0400
+TZOFFSETTO:-0500
+TZNAME:EST
+DTSTART:19701101T020000
+RRULE:FREQ=YEARLY;BYMONTH=11;BYDAY=1SU
+END:STANDARD
+END:VTIMEZONE
 BEGIN:VEVENT
 UID:${Date.now()}@workshop-registration.com
 DTSTAMP:${new Date().toISOString().replace(/[-:]/g, '').split('.')[0]}Z
-DTSTART:${startTime}
-DTEND:${endTime}
+DTSTART;TZID=America/New_York:20260610T120000
+DTEND;TZID=America/New_York:20260610T130000
 SUMMARY:Responsible AI in HR: From Hype to Accountability
-DESCRIPTION:Join us for a hands-on workshop on responsible AI in HR.\\n\\nTeams Link: ${teamsLink}
+DESCRIPTION:Join us for a hands-on workshop on responsible AI in HR.\\n\\nTeams Link: ${teamsLink}\\n\\nTime: 12:00 PM - 1:00 PM Eastern Time
 LOCATION:Microsoft Teams (Virtual)
 ORGANIZER;CN=Violetta Drobot:mailto:violettadrobot@gmail.com
 STATUS:CONFIRMED
