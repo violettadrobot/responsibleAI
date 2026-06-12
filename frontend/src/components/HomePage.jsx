@@ -13,7 +13,6 @@ const IMAGES = [
 
 export default function HomePage() {
   const [currentImageIndex, setCurrentImageIndex] = useState(0)
-  const [showRegistrationModal, setShowRegistrationModal] = useState(false)
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
@@ -21,6 +20,7 @@ export default function HomePage() {
     email: ''
   })
   const [formStatus, setFormStatus] = useState('idle') // idle, loading, success, error
+  const registrationRef = React.useRef(null)
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -66,10 +66,8 @@ export default function HomePage() {
     }
   }
 
-  const closeModal = () => {
-    setShowRegistrationModal(false)
-    setFormStatus('idle')
-    setFormData({ firstName: '', lastName: '', companyName: '', email: '' })
+  const scrollToRegistration = () => {
+    registrationRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' })
   }
 
   return (
@@ -110,98 +108,28 @@ export default function HomePage() {
               Learn how to write prompts that actually work—so you save 10+ hours per week without wasting time on bad results.
             </p>
             <button
-              onClick={() => setShowRegistrationModal(!showRegistrationModal)}
+              onClick={scrollToRegistration}
               className="workshop-button"
             >
-              {showRegistrationModal ? 'Hide Form' : 'Register Now'}
+              Register Now
             </button>
-
-            {showRegistrationModal && (
-              <div className="registration-form-expanded">
-                <h3 className="form-expanded-title">Registration Form</h3>
-                {formStatus === 'success' ? (
-                  <div className="form-expanded-success">
-                    <p>✓ Registration successful! Check your email for details.</p>
-                  </div>
-                ) : (
-                  <form onSubmit={handleFormSubmit} className="registration-form-inline">
-                    <div className="form-group">
-                      <label>First Name</label>
-                      <input
-                        type="text"
-                        name="firstName"
-                        value={formData.firstName}
-                        onChange={handleFormChange}
-                        required
-                      />
-                    </div>
-
-                    <div className="form-group">
-                      <label>Last Name</label>
-                      <input
-                        type="text"
-                        name="lastName"
-                        value={formData.lastName}
-                        onChange={handleFormChange}
-                        required
-                      />
-                    </div>
-
-                    <div className="form-group">
-                      <label>Company</label>
-                      <input
-                        type="text"
-                        name="companyName"
-                        value={formData.companyName}
-                        onChange={handleFormChange}
-                        required
-                      />
-                    </div>
-
-                    <div className="form-group">
-                      <label>Email</label>
-                      <input
-                        type="email"
-                        name="email"
-                        value={formData.email}
-                        onChange={handleFormChange}
-                        required
-                      />
-                    </div>
-
-                    <button
-                      type="submit"
-                      className="form-inline-submit"
-                      disabled={formStatus === 'loading'}
-                    >
-                      {formStatus === 'loading' ? 'Registering...' : 'Submit Registration'}
-                    </button>
-
-                    {formStatus === 'error' && (
-                      <p className="form-error">Error registering. Please try again.</p>
-                    )}
-                  </form>
-                )}
-              </div>
-            )}
           </div>
         </div>
       </section>
 
-      {/* Registration Modal */}
-      {showRegistrationModal && (
-        <div className="modal-overlay" onClick={closeModal}>
-          <div className="modal-content" onClick={(e) => e.stopPropagation()}>
-            <button className="modal-close" onClick={closeModal}>✕</button>
+      {/* Registration Page Section */}
+      <section className="registration-page" ref={registrationRef}>
+        <div className="registration-container">
+          <h2 className="registration-title">Register for Workshop</h2>
 
-            <h2 className="modal-title">Register for Workshop</h2>
-
-            {formStatus === 'success' ? (
-              <div className="modal-success">
-                <p>✓ Registration successful! Check your email for details.</p>
-              </div>
-            ) : (
-              <form onSubmit={handleFormSubmit} className="registration-form">
+          {formStatus === 'success' ? (
+            <div className="registration-success">
+              <p>✓ Registration successful!</p>
+              <p>Check your email for the Teams meeting link and event details.</p>
+            </div>
+          ) : (
+            <form onSubmit={handleFormSubmit} className="registration-form-page">
+              <div className="form-row">
                 <div className="form-group">
                   <label>First Name</label>
                   <input
@@ -223,7 +151,9 @@ export default function HomePage() {
                     required
                   />
                 </div>
+              </div>
 
+              <div className="form-row">
                 <div className="form-group">
                   <label>Company</label>
                   <input
@@ -245,23 +175,23 @@ export default function HomePage() {
                     required
                   />
                 </div>
+              </div>
 
-                <button
-                  type="submit"
-                  className="form-submit-button"
-                  disabled={formStatus === 'loading'}
-                >
-                  {formStatus === 'loading' ? 'Registering...' : 'Register'}
-                </button>
+              <button
+                type="submit"
+                className="form-page-submit-button"
+                disabled={formStatus === 'loading'}
+              >
+                {formStatus === 'loading' ? 'Registering...' : 'Complete Registration'}
+              </button>
 
-                {formStatus === 'error' && (
-                  <p className="form-error">Error registering. Please try again.</p>
-                )}
-              </form>
-            )}
-          </div>
+              {formStatus === 'error' && (
+                <p className="form-error">Error registering. Please try again.</p>
+              )}
+            </form>
+          )}
         </div>
-      )}
+      </section>
 
       {/* Navigation - Overlaid on top */}
       <nav className="navbar navbar-overlay">
