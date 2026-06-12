@@ -16,9 +16,10 @@ app.use(express.urlencoded({ extended: true }));
 // CORS Configuration
 const corsOptions = {
   origin: [
-    'http://localhost:5173', // Vite dev server
+    'http://localhost:5173',
     'http://localhost:3000',
     'http://localhost:3001',
+    'https://violettadrobot.com',
     process.env.FRONTEND_URL || 'http://localhost:5173'
   ],
   credentials: true
@@ -32,11 +33,7 @@ app.use('/api', signupRoutes);
 app.get('/', (req, res) => {
   res.json({
     message: 'Event Signup API',
-    status: 'running',
-    endpoints: {
-      signup: 'POST /api/signups',
-      health: 'GET /api/health'
-    }
+    status: 'running'
   });
 });
 
@@ -44,7 +41,6 @@ app.get('/', (req, res) => {
 app.use(notFound);
 app.use(errorHandler);
 
-app.listen(PORT, () => {
-  console.log(`Event Signup API running on http://localhost:${PORT}`);
-  console.log('CORS enabled for:', corsOptions.origin);
+app.listen(PORT, '0.0.0.0', () => {
+  console.log(`Event Signup API running on port ${PORT}`);
 });
