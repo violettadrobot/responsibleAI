@@ -66,7 +66,11 @@ export default function HomePage() {
   }
 
   const scrollToRegistration = () => {
-    registrationRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+    setTimeout(() => {
+      if (registrationRef.current) {
+        registrationRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' })
+      }
+    }, 0)
   }
 
   return (
