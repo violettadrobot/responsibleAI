@@ -16,6 +16,7 @@
     "cors": "^2.8.5",
     "axios": "^1.15.2",
     "dotenv": "^16.3.1",
-    "node-fetch": "^3.3.2"
+    "node-fetch": "^3.3.2",
+    "googleapis": "^118.0.0"
   }
 }
