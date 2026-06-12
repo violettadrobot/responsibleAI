@@ -116,7 +116,17 @@ export default function EventSignupPage() {
             <div className="reserve-card">
               <div className="reserve-price">Free</div>
 
-              {status === 'success' ? (
+              {status === 'closed' ? (
+                <div className="success-message" style={{ background: 'rgba(168, 85, 247, 0.1)', borderLeft: '4px solid #a855f7' }}>
+                  <div style={{ fontSize: '32px', marginBottom: '15px' }}>🎉</div>
+                  <h3>Event Closed</h3>
+                  <p>Thank you for your interest! Registration has ended for this workshop.</p>
+                  <p style={{ fontSize: '14px', marginTop: '15px', opacity: 0.8 }}>
+                    This event took place on June 10, 2026.<br/>
+                    We look forward to seeing you at our next event!
+                  </p>
+                </div>
+              ) : status === 'success' ? (
                 <div className="success-message">
                   <div className="success-icon">✓</div>
                   <h3>Registration Successful!</h3>
