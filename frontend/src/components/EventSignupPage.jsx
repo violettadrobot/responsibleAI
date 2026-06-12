@@ -81,33 +81,29 @@ export default function EventSignupPage() {
         <div className="event-content">
           {/* Left Column */}
           <div className="event-left">
-            <h1 className="event-title">Responsible AI in HR:<br />From Hype to Accountability</h1>
+            <h1 className="event-title">Practical AI for HR 101:<br />Prompt Engineering</h1>
 
             <div className="event-meta">
               <div className="meta-item">
-                <span>Virtual 60 minute training, June 10 from 12pm-1pm EST</span>
+                <span>Virtual 60 minute training, June 24 from 12pm-1pm EST</span>
               </div>
               <div className="meta-item speaker-item">
                 <img src="/images/violetta.jpg" alt="Violetta Drobot" className="speaker-image" />
                 <a href="https://www.linkedin.com/in/violetta-drobot/" target="_blank" rel="noopener noreferrer" className="meta-link">Violetta Drobot - AI Native HR Leader & Coach</a>
               </div>
-              <div className="meta-item speaker-item">
-                <img src="/images/melisa.jpg" alt="Melisa DiPietro" className="speaker-image" />
-                <a href="https://www.linkedin.com/in/meldip/" target="_blank" rel="noopener noreferrer" className="meta-link">Melisa DiPietro - Founder & Principal Consult at FlocknFir</a>
-              </div>
             </div>
 
             <h2 className="section-title">Overview</h2>
             <p className="overview-text">
-              Learn how to pressure-test your AI decisions for bias, privacy risks, and accountability gaps—so you can move forward with confidence instead of fear.
+              Learn how to write prompts that actually work—so you save 10+ hours per week without wasting time on bad results.
             </p>
 
             <h2 className="section-title">What You'll Learn</h2>
             <ul className="learn-list">
-              <li>Why AI fails in HR (it's rarely the algorithm)</li>
-              <li>Where HR is most at risk: hiring, compensation, performance ratings, surveys</li>
-              <li>How to build accountability that actually works</li>
-              <li>A framework to pressure-test your AI decisions today</li>
+              <li>Why most AI prompts fail in HR (and how to fix them)</li>
+              <li>Where HR leaders lose the most time: hiring decisions, compensation analysis, survey synthesis</li>
+              <li>How to build prompts that work the first time</li>
+              <li>A framework to pressure-test your AI outputs today</li>
             </ul>
           </div>
 

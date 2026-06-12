@@ -4,7 +4,7 @@ const BREVO_API_URL = 'https://api.brevo.com/v3/smtp/email';
 
 // Generate ICS calendar file with Eastern Time timezone
 const generateCalendarInvite = (teamsLink) => {
-  // June 10, 2026, 12:00 PM - 1:00 PM Eastern Time (EDT)
+  // June 24, 2026, 12:00 PM - 1:00 PM Eastern Time (EDT)
   const icsContent = `BEGIN:VCALENDAR
 VERSION:2.0
 PRODID:-//Workshop Registration//Responsible AI in HR//EN
@@ -30,10 +30,10 @@ END:VTIMEZONE
 BEGIN:VEVENT
 UID:${Date.now()}@workshop-registration.com
 DTSTAMP:${new Date().toISOString().replace(/[-:]/g, '').split('.')[0]}Z
-DTSTART;TZID=America/New_York:20260610T120000
-DTEND;TZID=America/New_York:20260610T130000
-SUMMARY:Responsible AI in HR: From Hype to Accountability
-DESCRIPTION:Join us for a hands-on workshop on responsible AI in HR.\\n\\nTeams Link: ${teamsLink}\\n\\nTime: 12:00 PM - 1:00 PM Eastern Time
+DTSTART;TZID=America/New_York:20260624T120000
+DTEND;TZID=America/New_York:20260624T130000
+SUMMARY:Practical AI for HR 101: Prompt Engineering
+DESCRIPTION:Learn how to write prompts that actually work.\\n\\nTeams Link: ${teamsLink}\\n\\nTime: 12:00 PM - 1:00 PM Eastern Time
 LOCATION:Microsoft Teams (Virtual)
 ORGANIZER;CN=Violetta Drobot:mailto:violettadrobot@gmail.com
 STATUS:CONFIRMED
@@ -80,33 +80,33 @@ export const sendConfirmationEmail = async (attendeeName, email, teamsLink) => {
       <body>
         <div class="container">
           <div class="header">
-            <h1>Responsible AI in HR</h1>
-            <p>From Hype to Accountability</p>
+            <h1>Practical AI for HR 101</h1>
+            <p>Prompt Engineering</p>
           </div>
 
           <div class="content">
             <div class="section">
               <p>Hello ${attendeeName},</p>
-              <p>Thank you for registering for our workshop on Responsible AI in HR. We're pleased to confirm your spot and look forward to exploring practical frameworks for ethical AI governance with you.</p>
+              <p>Thank you for registering for Practical AI for HR 101. We're excited to have you join us as we explore how to write prompts that actually work and save you 10+ hours per week.</p>
             </div>
 
             <div class="divider"></div>
 
             <div class="section">
               <h3>Workshop Details</h3>
-              <p><strong>Title:</strong> Responsible AI in HR: From Hype to Accountability</p>
+              <p><strong>Title:</strong> Practical AI for HR 101: Prompt Engineering</p>
               <p><strong>Format:</strong> Virtual via Microsoft Teams</p>
-              <p><strong>Date & Time:</strong> June 10, 2026 • 12:00 PM – 1:00 PM EST</p>
-              <p><strong>Duration:</strong> 60 minutes</p>
+              <p><strong>Date & Time:</strong> June 24, 2026 • 12:00 PM – 1:00 PM Eastern Time</p>
+              <p><strong>Duration:</strong> 60 minutes (45 minutes of material + 15 minutes Q&A)</p>
             </div>
 
             <div class="section">
               <h3>What You'll Learn</h3>
               <ul>
-                <li>Why AI implementations fail in HR—and what really matters</li>
-                <li>Critical risk areas: hiring, compensation, performance management, and employee surveys</li>
-                <li>How to build accountability frameworks that stick</li>
-                <li>A practical pressure-testing framework you can apply immediately</li>
+                <li>Why most AI prompts fail in HR (and how to fix them)</li>
+                <li>Where HR leaders lose the most time: hiring decisions, compensation analysis, survey synthesis</li>
+                <li>How to build prompts that work the first time</li>
+                <li>A framework to pressure-test your AI outputs today</li>
               </ul>
             </div>
 
