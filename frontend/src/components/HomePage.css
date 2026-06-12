@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
 
 .home-container {
   display: flex;
@@ -32,6 +32,48 @@
 
 .slideshow-image.active {
   opacity: 1;
+}
+
+/* Hero Text Overlay */
+.hero-overlay {
+  position: absolute;
+  top: 33%;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  width: 90%;
+  max-width: 1000px;
+  z-index: 10;
+}
+
+.hero-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 4.5em;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.95);
+  margin: 0 0 30px 0;
+  letter-spacing: 2px;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.hero-bio-line1 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2em;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.85);
+  margin: 0 0 20px 0;
+  line-height: 1.4;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.hero-bio-line2 {
+  font-family: 'Inter', sans-serif;
+  font-size: 1.1em;
+  font-weight: 300;
+  color: rgba(255, 255, 255, 0.8);
+  margin: 0;
+  line-height: 1.6;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
 }
 
 /* Navigation Bar - Transparent Overlay */
@@ -196,6 +238,20 @@
     font-size: 1em;
   }
 
+  .hero-name {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+  }
+
+  .hero-bio-line1 {
+    font-size: 1.3em;
+    margin-bottom: 15px;
+  }
+
+  .hero-bio-line2 {
+    font-size: 0.95em;
+  }
+
   .section-heading {
     font-size: 1.8em;
   }
@@ -225,6 +281,26 @@
   .nav-link,
   .social-link {
     font-size: 0.9em;
+  }
+
+  .hero-overlay {
+    top: 35%;
+    width: 95%;
+  }
+
+  .hero-name {
+    font-size: 1.8em;
+    margin-bottom: 15px;
+    letter-spacing: 1px;
+  }
+
+  .hero-bio-line1 {
+    font-size: 1em;
+    margin-bottom: 12px;
+  }
+
+  .hero-bio-line2 {
+    font-size: 0.85em;
   }
 
   .section-heading {

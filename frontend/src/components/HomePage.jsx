@@ -33,6 +33,13 @@ export default function HomePage() {
             className={`slideshow-image ${index === currentImageIndex ? 'active' : ''}`}
           />
         ))}
+
+        {/* Hero Text Overlay */}
+        <div className="hero-overlay">
+          <h1 className="hero-name">Violetta Drobot</h1>
+          <p className="hero-bio-line1">Applying Project Management Discipline to HR's AI Transformation</p>
+          <p className="hero-bio-line2">Empowering HR teams and leaders to lead AI adoption with confidence and accountability</p>
+        </div>
       </div>
 
       {/* Navigation - Overlaid on top */}
