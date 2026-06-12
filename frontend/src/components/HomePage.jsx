@@ -110,11 +110,80 @@ export default function HomePage() {
               Learn how to write prompts that actually work—so you save 10+ hours per week without wasting time on bad results.
             </p>
             <button
-              onClick={() => setShowRegistrationModal(true)}
+              onClick={() => setShowRegistrationModal(!showRegistrationModal)}
               className="workshop-button"
             >
-              Register Now
+              {showRegistrationModal ? 'Hide Form' : 'Register Now'}
             </button>
+
+            {showRegistrationModal && (
+              <div className="registration-form-expanded">
+                <h3 className="form-expanded-title">Registration Form</h3>
+                {formStatus === 'success' ? (
+                  <div className="form-expanded-success">
+                    <p>✓ Registration successful! Check your email for details.</p>
+                  </div>
+                ) : (
+                  <form onSubmit={handleFormSubmit} className="registration-form-inline">
+                    <div className="form-group">
+                      <label>First Name</label>
+                      <input
+                        type="text"
+                        name="firstName"
+                        value={formData.firstName}
+                        onChange={handleFormChange}
+                        required
+                      />
+                    </div>
+
+                    <div className="form-group">
+                      <label>Last Name</label>
+                      <input
+                        type="text"
+                        name="lastName"
+                        value={formData.lastName}
+                        onChange={handleFormChange}
+                        required
+                      />
+                    </div>
+
+                    <div className="form-group">
+                      <label>Company</label>
+                      <input
+                        type="text"
+                        name="companyName"
+                        value={formData.companyName}
+                        onChange={handleFormChange}
+                        required
+                      />
+                    </div>
+
+                    <div className="form-group">
+                      <label>Email</label>
+                      <input
+                        type="email"
+                        name="email"
+                        value={formData.email}
+                        onChange={handleFormChange}
+                        required
+                      />
+                    </div>
+
+                    <button
+                      type="submit"
+                      className="form-inline-submit"
+                      disabled={formStatus === 'loading'}
+                    >
+                      {formStatus === 'loading' ? 'Registering...' : 'Submit Registration'}
+                    </button>
+
+                    {formStatus === 'error' && (
+                      <p className="form-error">Error registering. Please try again.</p>
+                    )}
+                  </form>
+                )}
+              </div>
+            )}
           </div>
         </div>
       </section>
