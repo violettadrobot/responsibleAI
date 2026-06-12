@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import './HomePage.css'
 
 const IMAGES = [
@@ -20,7 +20,7 @@ export default function HomePage() {
     email: ''
   })
   const [formStatus, setFormStatus] = useState('idle') // idle, loading, success, error
-  const registrationRef = React.useRef(null)
+  const registrationRef = useRef(null)
 
   useEffect(() => {
     const interval = setInterval(() => {
