@@ -56,7 +56,12 @@ export default function HomePage() {
       </nav>
 
       {/* Upcoming Events */}
-      <section className="events-section">
+      <section
+        className="events-section"
+        style={{
+          backgroundImage: `url('${IMAGES[currentImageIndex]}')`,
+        }}
+      >
         <div className="events-content">
           <h2 className="section-heading">Upcoming Workshops</h2>
 
