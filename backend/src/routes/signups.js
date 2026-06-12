@@ -1,4 +1,5 @@
 import express from 'express';
+import { submitToGoogleSheet } from '../services/googleSheetsService.js';
 import { sendConfirmationEmail } from '../services/emailService.js';
 
 const router = express.Router();
@@ -50,6 +51,21 @@ router.post('/signups', async (req, res) => {
 
     // Prepare attendee name
     const attendeeName = `${firstName.trim()} ${lastName.trim()}`;
+
+    // Submit to Google Sheet
+    const googleSheetId = process.env.GOOGLE_SHEETS_ID;
+    if (googleSheetId) {
+      try {
+        await submitToGoogleSheet({
+          firstName: firstName.trim(),
+          lastName: lastName.trim(),
+          email: email.trim(),
+          companyName: companyName.trim()
+        }, googleSheetId);
+      } catch (error) {
+        console.error('Failed to save to Google Sheet:', error);
+      }
+    }
 
     // Send confirmation email
     const teamsLink = process.env.TEAMS_MEETING_LINK;
