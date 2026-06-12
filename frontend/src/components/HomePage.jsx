@@ -13,6 +13,7 @@ const IMAGES = [
 
 export default function HomePage() {
   const [currentImageIndex, setCurrentImageIndex] = useState(0)
+  const [showRegistration, setShowRegistration] = useState(false)
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
@@ -20,7 +21,6 @@ export default function HomePage() {
     email: ''
   })
   const [formStatus, setFormStatus] = useState('idle') // idle, loading, success, error
-  const registrationRef = useRef(null)
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -65,12 +65,8 @@ export default function HomePage() {
     }
   }
 
-  const scrollToRegistration = () => {
-    setTimeout(() => {
-      if (registrationRef.current) {
-        registrationRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' })
-      }
-    }, 0)
+  const handleRegisterClick = () => {
+    setShowRegistration(true)
   }
 
   return (
@@ -111,7 +107,7 @@ export default function HomePage() {
               Learn how to write prompts that actually work—so you save 10+ hours per week without wasting time on bad results.
             </p>
             <button
-              onClick={scrollToRegistration}
+              onClick={handleRegisterClick}
               className="workshop-button"
             >
               Register Now
@@ -121,8 +117,16 @@ export default function HomePage() {
       </section>
 
       {/* Registration Page Section */}
-      <section className="registration-page" ref={registrationRef}>
+      {showRegistration && (
+      <section className="registration-page">
         <div className="registration-container">
+          <button
+            onClick={() => setShowRegistration(false)}
+            className="registration-close-btn"
+            aria-label="Close registration"
+          >
+            ✕
+          </button>
           <h2 className="registration-title">Register for Workshop</h2>
 
           {formStatus === 'success' ? (
@@ -195,6 +199,7 @@ export default function HomePage() {
           )}
         </div>
       </section>
+      )}
 
       {/* Navigation - Overlaid on top */}
       <nav className="navbar navbar-overlay">
