@@ -1,13 +1,13 @@
 import { google } from 'googleapis';
 
-const sheets = google.sheets('v4');
-
 export const submitToGoogleSheet = async (formData, spreadsheetId, range = 'Sheet1!A:E') => {
   try {
     const auth = new google.auth.GoogleAuth({
       credentials: JSON.parse(process.env.GOOGLE_SHEETS_CREDENTIALS || '{}'),
       scopes: ['https://www.googleapis.com/auth/spreadsheets'],
     });
+
+    const sheets = google.sheets('v4');
 
     const request = {
       spreadsheetId: spreadsheetId,
