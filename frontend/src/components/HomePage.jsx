@@ -13,6 +13,14 @@ const IMAGES = [
 
 export default function HomePage() {
   const [currentImageIndex, setCurrentImageIndex] = useState(0)
+  const [showRegistrationModal, setShowRegistrationModal] = useState(false)
+  const [formData, setFormData] = useState({
+    firstName: '',
+    lastName: '',
+    companyName: '',
+    email: ''
+  })
+  const [formStatus, setFormStatus] = useState('idle') // idle, loading, success, error
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -20,6 +28,49 @@ export default function HomePage() {
     }, 7000)
     return () => clearInterval(interval)
   }, [])
+
+  const handleFormChange = (e) => {
+    const { name, value } = e.target
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }))
+  }
+
+  const handleFormSubmit = async (e) => {
+    e.preventDefault()
+    setFormStatus('loading')
+
+    try {
+      const response = await fetch('https://responsibleai-backend.onrender.com/api/signups', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData)
+      })
+
+      if (response.ok) {
+        setFormStatus('success')
+        setFormData({ firstName: '', lastName: '', companyName: '', email: '' })
+        setTimeout(() => {
+          setShowRegistrationModal(false)
+          setFormStatus('idle')
+        }, 2000)
+      } else {
+        setFormStatus('error')
+      }
+    } catch (error) {
+      console.error('Error:', error)
+      setFormStatus('error')
+    }
+  }
+
+  const closeModal = () => {
+    setShowRegistrationModal(false)
+    setFormStatus('idle')
+    setFormData({ firstName: '', lastName: '', companyName: '', email: '' })
+  }
 
   return (
     <div className="home-container">
@@ -58,12 +109,90 @@ export default function HomePage() {
             <p className="workshop-description">
               Learn how to write prompts that actually work—so you save 10+ hours per week without wasting time on bad results.
             </p>
-            <Link to="/prompt-engineering" className="workshop-button">
+            <button
+              onClick={() => setShowRegistrationModal(true)}
+              className="workshop-button"
+            >
               Register Now
-            </Link>
+            </button>
           </div>
         </div>
       </section>
+
+      {/* Registration Modal */}
+      {showRegistrationModal && (
+        <div className="modal-overlay" onClick={closeModal}>
+          <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+            <button className="modal-close" onClick={closeModal}>✕</button>
+
+            <h2 className="modal-title">Register for Workshop</h2>
+
+            {formStatus === 'success' ? (
+              <div className="modal-success">
+                <p>✓ Registration successful! Check your email for details.</p>
+              </div>
+            ) : (
+              <form onSubmit={handleFormSubmit} className="registration-form">
+                <div className="form-group">
+                  <label>First Name</label>
+                  <input
+                    type="text"
+                    name="firstName"
+                    value={formData.firstName}
+                    onChange={handleFormChange}
+                    required
+                  />
+                </div>
+
+                <div className="form-group">
+                  <label>Last Name</label>
+                  <input
+                    type="text"
+                    name="lastName"
+                    value={formData.lastName}
+                    onChange={handleFormChange}
+                    required
+                  />
+                </div>
+
+                <div className="form-group">
+                  <label>Company</label>
+                  <input
+                    type="text"
+                    name="companyName"
+                    value={formData.companyName}
+                    onChange={handleFormChange}
+                    required
+                  />
+                </div>
+
+                <div className="form-group">
+                  <label>Email</label>
+                  <input
+                    type="email"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleFormChange}
+                    required
+                  />
+                </div>
+
+                <button
+                  type="submit"
+                  className="form-submit-button"
+                  disabled={formStatus === 'loading'}
+                >
+                  {formStatus === 'loading' ? 'Registering...' : 'Register'}
+                </button>
+
+                {formStatus === 'error' && (
+                  <p className="form-error">Error registering. Please try again.</p>
+                )}
+              </form>
+            )}
+          </div>
+        </div>
+      )}
 
       {/* Navigation - Overlaid on top */}
       <nav className="navbar navbar-overlay">
