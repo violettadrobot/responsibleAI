@@ -42,7 +42,7 @@ export default function HomePage() {
     setFormStatus('loading')
 
     try {
-      const response = await fetch('https://responsibleai-backend.onrender.com/api/signups', {
+      const response = await fetch('https://responsibleai-jpk1.onrender.com/api/signups', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
