@@ -165,9 +165,14 @@
 
 .events-content {
   max-width: 1000px;
+  width: 100%;
+  padding: 0 20px;
   margin: 0 auto;
   position: relative;
   z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .section-heading {
