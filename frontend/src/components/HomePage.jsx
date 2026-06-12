@@ -42,6 +42,29 @@ export default function HomePage() {
         </div>
       </div>
 
+      {/* Upcoming Workshops Section - Full Page with Carousel Background */}
+      <section
+        className="workshops-section"
+        style={{
+          backgroundImage: `url('${IMAGES[currentImageIndex]}')`,
+        }}
+      >
+        <div className="workshops-overlay"></div>
+        <div className="workshops-content">
+          <h2 className="workshops-heading">Upcoming Workshops</h2>
+          <div className="workshop-card">
+            <h3>Practical AI for HR 101: Prompt Engineering</h3>
+            <p className="workshop-date">June 24, 2026 • 12:00 PM - 1:00 PM EST</p>
+            <p className="workshop-description">
+              Learn how to write prompts that actually work—so you save 10+ hours per week without wasting time on bad results.
+            </p>
+            <Link to="/prompt-engineering" className="workshop-button">
+              Register Now
+            </Link>
+          </div>
+        </div>
+      </section>
+
       {/* Navigation - Overlaid on top */}
       <nav className="navbar navbar-overlay">
         <div className="nav-content">

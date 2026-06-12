@@ -134,6 +134,111 @@
 
 
 
+/* Upcoming Workshops Section */
+.workshops-section {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  margin-top: 100vh;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  transition: background-image 1s ease-in-out;
+}
+
+.workshops-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(15, 23, 42, 0.75);
+  z-index: 1;
+}
+
+.workshops-content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+  padding: 40px 20px;
+  box-sizing: border-box;
+}
+
+.workshops-heading {
+  font-family: 'Playfair Display', serif;
+  font-size: 3em;
+  font-weight: 400;
+  background: linear-gradient(135deg, #00d4ff 0%, #7c3aed 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin: 0 0 50px 0;
+  text-align: center;
+}
+
+.workshop-card {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(0, 212, 255, 0.2);
+  border-radius: 8px;
+  padding: 40px;
+  max-width: 600px;
+  width: 100%;
+  transition: all 0.3s ease;
+}
+
+.workshop-card:hover {
+  background: rgba(15, 23, 42, 0.3);
+  border-color: #00d4ff;
+  box-shadow: 0 12px 48px rgba(0, 212, 255, 0.2);
+}
+
+.workshop-card h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.8em;
+  margin: 0 0 15px 0;
+  color: #ffffff;
+}
+
+.workshop-date {
+  color: #00d4ff;
+  font-weight: 600;
+  margin: 0 0 15px 0;
+  font-size: 0.95em;
+}
+
+.workshop-description {
+  color: #b8c5d6;
+  line-height: 1.6;
+  margin: 0 0 25px 0;
+  font-size: 1em;
+}
+
+.workshop-button {
+  display: inline-block;
+  background: linear-gradient(135deg, #00d4ff 0%, #7c3aed 100%);
+  color: #0f172a;
+  padding: 14px 36px;
+  text-decoration: none;
+  border-radius: 6px;
+  font-weight: 700;
+  transition: all 0.3s ease;
+  font-size: 1em;
+  border: none;
+  cursor: pointer;
+}
+
+.workshop-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 212, 255, 0.3);
+}
+
 /* Responsive Design */
 @media (max-width: 768px) {
   .nav-content {
@@ -161,6 +266,19 @@
 
   .hero-bio-line2 {
     font-size: 0.95em;
+  }
+
+  .workshops-heading {
+    font-size: 2em;
+    margin-bottom: 30px;
+  }
+
+  .workshop-card {
+    padding: 30px;
+  }
+
+  .workshop-card h3 {
+    font-size: 1.4em;
   }
 }
 
@@ -202,7 +320,24 @@
     font-size: 0.85em;
   }
 
-  .section-heading {
-    font-size: 1.4em;
+  .workshops-heading {
+    font-size: 1.5em;
+    margin-bottom: 20px;
+  }
+
+  .workshop-card {
+    padding: 20px;
+  }
+
+  .workshop-card h3 {
+    font-size: 1.1em;
+  }
+
+  .workshop-date {
+    font-size: 0.85em;
+  }
+
+  .workshop-description {
+    font-size: 0.9em;
   }
 }
