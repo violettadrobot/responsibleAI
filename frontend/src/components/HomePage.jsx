@@ -54,8 +54,9 @@ export default function HomePage() {
         setFormStatus('success')
         setFormData({ firstName: '', lastName: '', companyName: '', email: '' })
         setTimeout(() => {
+          setShowRegistration(false)
           setFormStatus('idle')
-        }, 2000)
+        }, 10000)
       } else {
         setFormStatus('error')
       }
@@ -132,7 +133,8 @@ export default function HomePage() {
           {formStatus === 'success' ? (
             <div className="registration-success">
               <p>✓ Registration successful!</p>
-              <p>Check your email for the Teams meeting link and event details.</p>
+              <p>You will receive an email from <strong>violetta@violettadrobot.com</strong> with the Teams meeting link and event details.</p>
+              <p style={{ fontSize: '0.9em', marginTop: '20px', color: '#b8c5d6' }}>This window will close in 10 seconds...</p>
             </div>
           ) : (
             <form onSubmit={handleFormSubmit} className="registration-form-page">
