@@ -3,10 +3,12 @@ import { useState, useEffect } from 'react'
 import './HomePage.css'
 
 const IMAGES = [
-  '/images/day__02 - -  (459).jpg',
-  '/images/day__02 - -  (482).jpg',
   '/images/day__02 - -  (486).jpg',
-  '/images/day__02 - -  (509).jpg'
+  '/images/day__02 - -  (459).jpg',
+  '/images/day__02 - -  (509).jpg',
+  '/images/day__02 - -  (469).jpg',
+  '/images/day__02 - -  (482).jpg',
+  '/images/day__02 - -  (471).jpg'
 ]
 
 export default function HomePage() {
@@ -15,7 +17,7 @@ export default function HomePage() {
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentImageIndex((prev) => (prev + 1) % IMAGES.length)
-    }, 3000)
+    }, 5000)
     return () => clearInterval(interval)
   }, [])
 
