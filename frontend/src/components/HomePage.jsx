@@ -14,6 +14,7 @@ const IMAGES = [
 export default function HomePage() {
   const [currentImageIndex, setCurrentImageIndex] = useState(0)
   const [showRegistration, setShowRegistration] = useState(false)
+  const [countdown, setCountdown] = useState(10)
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
@@ -28,6 +29,19 @@ export default function HomePage() {
     }, 7000)
     return () => clearInterval(interval)
   }, [])
+
+  useEffect(() => {
+    if (formStatus === 'success' && countdown > 0) {
+      const timer = setTimeout(() => {
+        setCountdown(countdown - 1)
+      }, 1000)
+      return () => clearTimeout(timer)
+    } else if (countdown === 0 && formStatus === 'success') {
+      setShowRegistration(false)
+      setFormStatus('idle')
+      setCountdown(10)
+    }
+  }, [formStatus, countdown])
 
   const handleFormChange = (e) => {
     const { name, value } = e.target
@@ -52,11 +66,8 @@ export default function HomePage() {
 
       if (response.ok) {
         setFormStatus('success')
+        setCountdown(10)
         setFormData({ firstName: '', lastName: '', companyName: '', email: '' })
-        setTimeout(() => {
-          setShowRegistration(false)
-          setFormStatus('idle')
-        }, 10000)
       } else {
         setFormStatus('error')
       }
@@ -134,7 +145,7 @@ export default function HomePage() {
             <div className="registration-success">
               <p>✓ Registration successful!</p>
               <p>You will receive an email from <strong>violetta@violettadrobot.com</strong> with the Teams meeting link and event details.</p>
-              <p style={{ fontSize: '0.9em', marginTop: '20px', color: '#b8c5d6' }}>This window will close in 10 seconds...</p>
+              <p style={{ fontSize: '0.9em', marginTop: '20px', color: '#b8c5d6' }}>This window will close in {countdown} second{countdown !== 1 ? 's' : ''}...</p>
             </div>
           ) : (
             <form onSubmit={handleFormSubmit} className="registration-form-page">
