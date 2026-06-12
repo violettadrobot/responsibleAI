@@ -55,33 +55,7 @@ export default function HomePage() {
         </div>
       </nav>
 
-      {/* Upcoming Events */}
-      <section
-        className="events-section"
-        style={{
-          backgroundImage: `url('${IMAGES[currentImageIndex]}')`,
-        }}
-      >
-        <div className="events-content">
-          <h2 className="section-heading">Upcoming Workshops</h2>
 
-          <div className="event-card">
-            <h3>Practical AI for HR 101: Prompt Engineering</h3>
-            <p className="event-date">June 24, 2026 • 12:00 PM - 1:00 PM EST</p>
-            <p className="event-description">
-              Learn how to write prompts that actually work—so you save 10+ hours per week without wasting time on bad results.
-            </p>
-            <Link to="/prompt-engineering" className="event-button">
-              Register Now
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* Footer */}
-      <footer className="footer">
-        <p>© 2026 Violetta Drobot. All rights reserved.</p>
-      </footer>
     </div>
   )
 }
