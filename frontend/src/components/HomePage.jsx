@@ -54,7 +54,6 @@ export default function HomePage() {
         setFormStatus('success')
         setFormData({ firstName: '', lastName: '', companyName: '', email: '' })
         setTimeout(() => {
-          setShowRegistrationModal(false)
           setFormStatus('idle')
         }, 2000)
       } else {
