@@ -1,11 +1,40 @@
 import { Link } from 'react-router-dom'
+import { useState, useEffect } from 'react'
 import './HomePage.css'
 
+const IMAGES = [
+  '/images/day__02 - -  (459).jpg',
+  '/images/day__02 - -  (482).jpg',
+  '/images/day__02 - -  (486).jpg',
+  '/images/day__02 - -  (509).jpg'
+]
+
 export default function HomePage() {
+  const [currentImageIndex, setCurrentImageIndex] = useState(0)
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentImageIndex((prev) => (prev + 1) % IMAGES.length)
+    }, 3000)
+    return () => clearInterval(interval)
+  }, [])
+
   return (
     <div className="home-container">
-      {/* Navigation */}
-      <nav className="navbar">
+      {/* Full-Screen Image Slideshow */}
+      <div className="slideshow-container">
+        {IMAGES.map((image, index) => (
+          <img
+            key={index}
+            src={image}
+            alt={`Slide ${index + 1}`}
+            className={`slideshow-image ${index === currentImageIndex ? 'active' : ''}`}
+          />
+        ))}
+      </div>
+
+      {/* Navigation - Overlaid on top */}
+      <nav className="navbar navbar-overlay">
         <div className="nav-content">
           <Link to="/" className="logo">
             <span className="logo-text">Violetta Drobot</span>
@@ -19,30 +48,6 @@ export default function HomePage() {
           </div>
         </div>
       </nav>
-
-      {/* Hero Section */}
-      <section className="hero">
-        <div className="hero-content">
-          <div className="video-container">
-            <iframe
-              width="100%"
-              height="400"
-              src="https://www.youtube.com/embed/wj3kPZtw8EI"
-              title="Applying Project Management Discipline to HR's AI Transformation"
-              frameBorder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowFullScreen
-            ></iframe>
-          </div>
-
-          <div className="hero-text">
-            <h1 className="hero-title">Applying Project Management Discipline to HR's AI Transformation</h1>
-            <p className="hero-tagline">
-              Empowering HR teams and leaders to lead AI adoption with confidence and accountability
-            </p>
-          </div>
-        </div>
-      </section>
 
       {/* Upcoming Events */}
       <section className="events-section">
