@@ -37,7 +37,7 @@
 /* Hero Text Overlay */
 .hero-overlay {
   position: absolute;
-  top: 33%;
+  top: 42%;
   left: 50%;
   transform: translateX(-50%);
   text-align: center;
@@ -49,7 +49,7 @@
 .hero-name {
   font-family: 'Cormorant Garamond', serif;
   font-size: 4.5em;
-  font-weight: 400;
+  font-weight: 700;
   color: rgba(255, 255, 255, 0.95);
   margin: 0 0 30px 0;
   letter-spacing: 2px;
@@ -59,7 +59,7 @@
 .hero-bio-line1 {
   font-family: 'Cormorant Garamond', serif;
   font-size: 2em;
-  font-weight: 400;
+  font-weight: 700;
   color: rgba(255, 255, 255, 0.85);
   margin: 0 0 20px 0;
   line-height: 1.4;
@@ -69,7 +69,7 @@
 .hero-bio-line2 {
   font-family: 'Inter', sans-serif;
   font-size: 1.1em;
-  font-weight: 300;
+  font-weight: 600;
   color: rgba(255, 255, 255, 0.8);
   margin: 0;
   line-height: 1.6;
