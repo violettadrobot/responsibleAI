@@ -36,9 +36,6 @@ export default function HomePage() {
       {/* Navigation - Overlaid on top */}
       <nav className="navbar navbar-overlay">
         <div className="nav-content">
-          <Link to="/" className="logo">
-            <span className="logo-text">Violetta Drobot</span>
-          </Link>
           <div className="nav-links">
             <Link to="/" className="nav-link active">Home</Link>
             <Link to="/prompt-engineering" className="nav-link">Events</Link>

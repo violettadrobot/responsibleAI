@@ -34,62 +34,40 @@
   opacity: 1;
 }
 
-/* Navigation Bar - Overlay */
+/* Navigation Bar - Transparent Overlay */
 .navbar {
-  background-color: rgba(15, 23, 42, 0.85);
-  backdrop-filter: blur(8px);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-  padding: 20px 0;
-  position: sticky;
-  top: 0;
-  z-index: 100;
-}
-
-.navbar.navbar-overlay {
   position: fixed;
+  top: 0;
+  left: 0;
   width: 100%;
-  background-color: rgba(15, 23, 42, 0.8);
+  background-color: transparent;
+  border: none;
+  padding: 30px 0;
+  z-index: 100;
 }
 
 .nav-content {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 20px;
+  padding: 0 40px;
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
   align-items: center;
-}
-
-.logo {
-  text-decoration: none;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.logo-text {
-  font-family: 'Playfair Display', serif;
-  font-size: 24px;
-  font-weight: 600;
-  background: linear-gradient(135deg, #00d4ff 0%, #7c3aed 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  text-decoration: none;
 }
 
 .nav-links {
   display: flex;
-  gap: 30px;
+  gap: 40px;
   align-items: center;
 }
 
 .nav-link {
-  color: #b8c5d6;
+  color: #ffffff;
   text-decoration: none;
   font-weight: 500;
   transition: all 0.3s ease;
   border-bottom: 2px solid transparent;
+  font-size: 1.1em;
 }
 
 .nav-link:hover {
@@ -97,15 +75,15 @@
 }
 
 .nav-link.active {
-  color: #00d4ff;
-  border-bottom-color: #00d4ff;
+  color: #ffffff;
 }
 
 .social-link {
-  color: #b8c5d6;
+  color: #ffffff;
   text-decoration: none;
   font-weight: 500;
   transition: all 0.3s ease;
+  font-size: 1.1em;
 }
 
 .social-link:hover {
@@ -115,7 +93,7 @@
 
 /* Events Section */
 .events-section {
-  padding: 100px 20px 80px 20px;
+  padding: 80px 20px;
   background-color: #0f172a;
   border-top: 1px solid rgba(255, 255, 255, 0.1);
   position: relative;
@@ -206,12 +184,16 @@
 /* Responsive Design */
 @media (max-width: 768px) {
   .nav-content {
-    flex-direction: column;
-    gap: 20px;
+    padding: 0 20px;
   }
 
   .nav-links {
-    gap: 20px;
+    gap: 25px;
+  }
+
+  .nav-link,
+  .social-link {
+    font-size: 1em;
   }
 
   .section-heading {
@@ -228,11 +210,24 @@
 }
 
 @media (max-width: 480px) {
-  .section-heading {
-    font-size: 1.4em;
+  .navbar {
+    padding: 20px 0;
+  }
+
+  .nav-content {
+    padding: 0 15px;
   }
 
   .nav-links {
     gap: 15px;
+  }
+
+  .nav-link,
+  .social-link {
+    font-size: 0.9em;
+  }
+
+  .section-heading {
+    font-size: 1.4em;
   }
 }
