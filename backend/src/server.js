@@ -1,5 +1,6 @@
 import express from 'express';
 import cors from 'cors';
+import signupsRouter from './routes/signups.js';
 
 const app = express();
 const PORT = process.env.PORT || 3001;
@@ -26,9 +27,7 @@ app.get('/test-sheets', async (req, res) => {
   }
 });
 
-app.post('/api/signups', (req, res) => {
-  res.json({ success: true, message: 'Registration successful!' });
-});
+app.use('/api', signupsRouter);
 
 app.listen(PORT, '0.0.0.0', () => {
   console.log(`Server on ${PORT}`);
