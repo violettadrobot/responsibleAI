@@ -3,6 +3,7 @@ import { google } from 'googleapis';
 export const submitToGoogleSheet = async (formData, spreadsheetId) => {
   try {
     console.log('Starting Google Sheets submission...');
+    console.log('Form data:', formData);
     const credsString = process.env.GOOGLE_SHEETS_CREDENTIALS || '{}';
     console.log('Credentials loaded, parsing JSON...');
 
@@ -17,17 +18,21 @@ export const submitToGoogleSheet = async (formData, spreadsheetId) => {
 
     const sheets = google.sheets({ version: 'v4', auth });
 
-    const values = [[
-      formData.firstName,
-      formData.lastName,
-      formData.email,
-      formData.companyName,
+    // Build row data with available fields in order
+    const rowData = [
+      formData.firstName || '',
+      formData.lastName || '',
+      formData.email || '',
+      formData.services || formData.companyName || '',
+      formData.message || '',
       new Date().toLocaleString('en-US', { timeZone: 'America/New_York' })
-    ]];
+    ];
+
+    const values = [rowData];
 
     await sheets.spreadsheets.values.append({
       spreadsheetId: spreadsheetId,
-      range: 'Sheet1!A:E',
+      range: 'Sheet1!A:F',
       valueInputOption: 'USER_ENTERED',
       resource: { values }
     });
