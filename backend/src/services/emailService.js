@@ -44,16 +44,82 @@ END:VCALENDAR`;
   return Buffer.from(icsContent).toString('base64');
 };
 
-export const sendConfirmationEmail = async (attendeeName, email, teamsLink) => {
+export const sendConfirmationEmail = async (attendeeName, email, teamsLink, emailType = 'signup') => {
   const apiKey = process.env.BREVO_API_KEY;
   const fromEmail = process.env.BREVO_FROM_EMAIL || process.env.SENDER_EMAIL;
-  const fromName = process.env.BREVO_FROM_NAME || 'Workshop Registration';
+  const fromName = process.env.BREVO_FROM_NAME || 'Violetta Drobot';
 
   if (!apiKey) {
     throw new Error('BREVO_API_KEY is not configured');
   }
 
-  const htmlContent = `
+  let htmlContent;
+  let subject;
+  let attachment = [];
+
+  if (emailType === 'contact') {
+    subject = 'We received your message';
+    htmlContent = `
+      <html>
+        <head>
+          <style>
+            @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap');
+
+            body { font-family: 'Inter', sans-serif; color: #b8c5d6; line-height: 1.6; background-color: #0f172a; }
+            .container { max-width: 600px; margin: 0 auto; padding: 0; }
+            .header { background-color: #0f172a; color: white; padding: 40px 20px; text-align: center; border-bottom: 2px solid #00d4ff; }
+            .header h1 { font-family: 'Playfair Display', serif; font-size: 52px; font-weight: 400; margin: 0 0 12px 0; letter-spacing: 0px; color: #00d4ff; line-height: 1.2; }
+            .content { padding: 40px 20px; background-color: #0f172a; }
+            .section { margin: 25px 0; }
+            .section h3 { font-family: 'Playfair Display', serif; font-size: 18px; font-weight: 400; color: #00d4ff; margin: 20px 0 12px 0; letter-spacing: 0.3px; }
+            .section p { font-size: 14px; color: #b8c5d6; margin: 10px 0; line-height: 1.6; }
+            .footer { margin-top: 30px; padding-top: 20px; border-top: 1px solid rgba(0, 212, 255, 0.2); font-size: 12px; color: #8b98b0; text-align: center; }
+            .divider { height: 1px; background-color: rgba(0, 212, 255, 0.2); margin: 25px 0; }
+          </style>
+        </head>
+        <body>
+          <div class="container">
+            <div class="header">
+              <h1>Thank You</h1>
+            </div>
+
+            <div class="content">
+              <div class="section">
+                <p>Hi ${attendeeName},</p>
+                <p>Thank you for reaching out! We received your message and appreciate your interest in working together.</p>
+              </div>
+
+              <div class="divider"></div>
+
+              <div class="section">
+                <h3>What's Next</h3>
+                <p>Our team will review your inquiry and get back to you within 1-2 business days with next steps.</p>
+              </div>
+
+              <div class="section">
+                <p>If you have any urgent questions in the meantime, feel free to reach out directly.</p>
+              </div>
+
+              <div class="footer">
+                <p style="margin: 0;">This is an automated confirmation. Please do not reply to this email.</p>
+                <p style="margin: 10px 0 0 0; font-size: 11px;">We respect your privacy. Your information is used solely for contact and communication purposes.</p>
+              </div>
+            </div>
+          </div>
+        </body>
+      </html>
+    `;
+  } else {
+    // signup email
+    subject = 'Confirmation: Responsible AI in HR Workshop';
+    const calendarBase64 = generateCalendarInvite(teamsLink);
+    attachment = [
+      {
+        content: calendarBase64,
+        name: 'workshop-invite.ics'
+      }
+    ];
+    htmlContent = `
     <html>
       <head>
         <style>
@@ -135,26 +201,28 @@ export const sendConfirmationEmail = async (attendeeName, email, teamsLink) => {
     </html>
   `;
 
+    </html>
+    `;
+  }
+
   try {
-    const calendarBase64 = generateCalendarInvite(teamsLink);
+    const emailPayload = {
+      to: [{ email, name: attendeeName }],
+      subject: subject,
+      htmlContent: htmlContent,
+      sender: {
+        email: fromEmail,
+        name: fromName
+      }
+    };
+
+    if (attachment.length > 0) {
+      emailPayload.attachment = attachment;
+    }
 
     const response = await axios.post(
       BREVO_API_URL,
-      {
-        to: [{ email, name: attendeeName }],
-        subject: 'Confirmation: Responsible AI in HR Workshop',
-        htmlContent: htmlContent,
-        sender: {
-          email: fromEmail,
-          name: fromName
-        },
-        attachment: [
-          {
-            content: calendarBase64,
-            name: 'workshop-invite.ics'
-          }
-        ]
-      },
+      emailPayload,
       {
         headers: {
           'api-key': apiKey,

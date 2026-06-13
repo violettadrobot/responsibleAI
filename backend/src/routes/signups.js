@@ -30,6 +30,27 @@ const validateSignupData = (data) => {
   return errors;
 };
 
+const validateContactData = (data) => {
+  const errors = [];
+
+  if (!data.firstName || data.firstName.trim() === '') {
+    errors.push('First name is required');
+  }
+  if (!data.lastName || data.lastName.trim() === '') {
+    errors.push('Last name is required');
+  }
+  if (!data.email || data.email.trim() === '') {
+    errors.push('Email is required');
+  } else if (!validateEmail(data.email)) {
+    errors.push('Email format is invalid');
+  }
+  if (!data.message || data.message.trim() === '') {
+    errors.push('Message is required');
+  }
+
+  return errors;
+};
+
 router.post('/signups', async (req, res) => {
   try {
     const { firstName, lastName, email, companyName } = req.body;
@@ -93,6 +114,68 @@ router.post('/signups', async (req, res) => {
     res.status(500).json({
       success: false,
       error: error.message || 'Failed to process registration'
+    });
+  }
+});
+
+router.post('/contact', async (req, res) => {
+  try {
+    const { firstName, lastName, email, services, message } = req.body;
+
+    // Validate input
+    const validationErrors = validateContactData({
+      firstName,
+      lastName,
+      email,
+      message
+    });
+
+    if (validationErrors.length > 0) {
+      return res.status(400).json({
+        success: false,
+        errors: validationErrors
+      });
+    }
+
+    // Prepare contact name
+    const contactName = `${firstName.trim()} ${lastName.trim()}`;
+    const servicesList = Array.isArray(services) ? services.join(', ') : '';
+
+    // Submit to Google Sheet
+    const contactGoogleSheetId = process.env.GOOGLE_SHEETS_CONTACT_ID;
+    if (contactGoogleSheetId) {
+      try {
+        await submitToGoogleSheet({
+          firstName: firstName.trim(),
+          lastName: lastName.trim(),
+          email: email.trim(),
+          services: servicesList,
+          message: message.trim()
+        }, contactGoogleSheetId);
+      } catch (error) {
+        console.error('Failed to save contact to Google Sheet:', error);
+      }
+    }
+
+    // Send confirmation email
+    await sendConfirmationEmail(contactName, email.trim(), null, 'contact');
+
+    // Return success response
+    res.status(200).json({
+      success: true,
+      message: 'Thank you! We received your message and will get back to you soon.',
+      data: {
+        name: contactName,
+        email: email.trim(),
+        services: servicesList,
+        message: message.trim()
+      }
+    });
+  } catch (error) {
+    console.error('Error processing contact form:', error);
+    res.status(500).json({
+      success: false,
+      error: error.message || 'Failed to process contact form'
     });
   }
 });

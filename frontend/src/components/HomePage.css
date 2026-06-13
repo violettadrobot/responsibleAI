@@ -110,6 +110,7 @@
   transition: all 0.3s ease;
   border-bottom: 2px solid transparent;
   font-size: 1.1em;
+  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.6), 0 2px 8px rgba(0, 0, 0, 0.5);
 }
 
 .nav-link:hover {
@@ -126,6 +127,7 @@
   font-weight: 500;
   transition: all 0.3s ease;
   font-size: 1.1em;
+  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.6), 0 2px 8px rgba(0, 0, 0, 0.5);
 }
 
 .social-link:hover {

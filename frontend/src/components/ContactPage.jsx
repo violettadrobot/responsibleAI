@@ -15,8 +15,6 @@ export default function ContactPage() {
 
   const serviceOptions = [
     'Public Speaking',
-    'Brand Strategy Advisory',
-    'Social Media Campaigns',
     'General Inquiry'
   ]
 
@@ -141,7 +139,7 @@ export default function ContactPage() {
                 value={formData.message}
                 onChange={handleChange}
                 placeholder="Tell us more about your inquiry..."
-                rows="5"
+                rows="2"
               />
             </div>
 
