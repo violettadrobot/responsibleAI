@@ -73,22 +73,23 @@ export default function ContactPage() {
 
   return (
     <div className="contact-page-container">
-      {/* Hero Section */}
-      <section className="contact-hero">
+      {/* Header - Full Width */}
+      <section className="contact-header">
         <h1>Let's work together</h1>
-        <p>Interested in working together? Fill out some info and we will be in touch shortly! We can't wait to hear from you.</p>
+        <p>Fill out the form below and we'll be in touch soon.</p>
       </section>
 
-      {/* Contact Form Section */}
-      <section className="contact-form-section">
-        <div className="contact-form-wrapper">
-          {/* Headshot Image */}
-          <div className="contact-image-col">
-            <img src="/images/Image (73).jpg" alt="Violetta Drobot" className="contact-headshot" />
-          </div>
+      {/* Main Section - 50/50 Split */}
+      <section className="contact-main">
+        {/* Left Half - Image */}
+        <div className="contact-left">
+          <img src="/images/Image (73).jpg" alt="Violetta Drobot" className="contact-headshot" />
+        </div>
 
-          {/* Form */}
-          <div className="contact-form-col">
+        {/* Right Half - Form */}
+        <div className="contact-right">
+          <div className="form-container">
+            {/* Form */}
             <form onSubmit={handleFormSubmit} className="contact-form">
               <div className="form-group-row">
                 <div className="form-group">
