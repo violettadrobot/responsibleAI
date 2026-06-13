@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import './ContactPage.css'
 
@@ -12,6 +12,19 @@ export default function ContactPage() {
   })
 
   const [formStatus, setFormStatus] = useState('idle')
+  const [countdown, setCountdown] = useState(10)
+
+  useEffect(() => {
+    if (formStatus === 'success' && countdown > 0) {
+      const timer = setTimeout(() => {
+        setCountdown(countdown - 1)
+      }, 1000)
+      return () => clearTimeout(timer)
+    } else if (countdown === 0 && formStatus === 'success') {
+      setFormStatus('idle')
+      setCountdown(10)
+    }
+  }, [formStatus, countdown])
 
   const serviceOptions = [
     'Public Speaking',
@@ -49,6 +62,7 @@ export default function ContactPage() {
 
       if (response.ok) {
         setFormStatus('success')
+        setCountdown(10)
         setFormData({
           firstName: '',
           lastName: '',
@@ -56,7 +70,6 @@ export default function ContactPage() {
           services: [],
           message: ''
         })
-        setTimeout(() => setFormStatus('idle'), 4000)
       } else {
         setFormStatus('error')
       }
@@ -148,7 +161,10 @@ export default function ContactPage() {
             </button>
 
             {formStatus === 'success' && (
-              <p className="success-message">Thank you! We'll get back to you soon.</p>
+              <div className="success-message">
+                <p>✓ Thank you! We received your message.</p>
+                <p style={{ fontSize: '0.9em', marginTop: '10px', color: '#b8c5d6' }}>This window will close in {countdown} second{countdown !== 1 ? 's' : ''}...</p>
+              </div>
             )}
             {formStatus === 'error' && (
               <p className="error-message">Error sending message. Please try again.</p>
