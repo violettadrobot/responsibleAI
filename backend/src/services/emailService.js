@@ -121,11 +121,15 @@ export const sendConfirmationEmail = async (attendeeName, email, teamsLink, emai
 
               <div class="section">
                 <h3>What's Next</h3>
-                <p>Our team will review your inquiry and get back to you within 1-2 business days with next steps.</p>
+                <p>I will review your inquiry and get back to you within 1-3 business days with next steps.</p>
               </div>
 
               <div class="section">
-                <p>If you have any urgent questions in the meantime, feel free to reach out directly.</p>
+                <p>If you have any urgent questions in the meantime, feel free to reach out directly at violetta@violettadrobot.com</p>
+              </div>
+
+              <div class="section">
+                <p style="margin-top: 20px;">~Cheers<br/><strong>Violetta</strong></p>
               </div>
 
               <div class="footer">
