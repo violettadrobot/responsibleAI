@@ -219,7 +219,7 @@ export default function HomePage() {
         <div className="nav-content">
           <div className="nav-links">
             <Link to="/" className="nav-link active">Home</Link>
-            <Link to="/prompt-engineering" className="nav-link">Events</Link>
+            <Link to="/contact" className="nav-link">Contact</Link>
             <a href="https://www.linkedin.com/in/violetta-drobot/" target="_blank" rel="noopener noreferrer" className="social-link">
               LinkedIn
             </a>
