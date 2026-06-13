@@ -157,8 +157,14 @@ router.post('/contact', async (req, res) => {
       }
     }
 
-    // Send confirmation email
-    await sendConfirmationEmail(contactName, email.trim(), null, 'contact');
+    // Send confirmation email with contact data
+    await sendConfirmationEmail(contactName, email.trim(), null, 'contact', {
+      firstName: firstName.trim(),
+      lastName: lastName.trim(),
+      email: email.trim(),
+      services: servicesList,
+      message: message.trim()
+    });
 
     // Return success response
     res.status(200).json({

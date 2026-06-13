@@ -44,7 +44,7 @@ END:VCALENDAR`;
   return Buffer.from(icsContent).toString('base64');
 };
 
-export const sendConfirmationEmail = async (attendeeName, email, teamsLink, emailType = 'signup') => {
+export const sendConfirmationEmail = async (attendeeName, email, teamsLink, emailType = 'signup', contactData = null) => {
   const apiKey = process.env.BREVO_API_KEY;
   const fromEmail = process.env.BREVO_FROM_EMAIL || process.env.SENDER_EMAIL;
   const fromName = process.env.BREVO_FROM_NAME || 'Violetta Drobot';
@@ -59,6 +59,9 @@ export const sendConfirmationEmail = async (attendeeName, email, teamsLink, emai
 
   if (emailType === 'contact') {
     subject = 'We received your message';
+    const servicesText = contactData?.services || 'Not specified';
+    const messageText = contactData?.message || 'No message provided';
+
     htmlContent = `
       <html>
         <head>
@@ -73,6 +76,9 @@ export const sendConfirmationEmail = async (attendeeName, email, teamsLink, emai
             .section { margin: 25px 0; }
             .section h3 { font-family: 'Playfair Display', serif; font-size: 18px; font-weight: 400; color: #00d4ff; margin: 20px 0 12px 0; letter-spacing: 0.3px; }
             .section p { font-size: 14px; color: #b8c5d6; margin: 10px 0; line-height: 1.6; }
+            .data-box { background: rgba(0, 212, 255, 0.1); padding: 15px; border-left: 4px solid #00d4ff; border-radius: 4px; margin: 15px 0; }
+            .data-label { font-weight: 600; color: #00d4ff; font-size: 13px; }
+            .data-value { color: #b8c5d6; font-size: 14px; margin-top: 5px; word-wrap: break-word; }
             .footer { margin-top: 30px; padding-top: 20px; border-top: 1px solid rgba(0, 212, 255, 0.2); font-size: 12px; color: #8b98b0; text-align: center; }
             .divider { height: 1px; background-color: rgba(0, 212, 255, 0.2); margin: 25px 0; }
           </style>
@@ -87,6 +93,28 @@ export const sendConfirmationEmail = async (attendeeName, email, teamsLink, emai
               <div class="section">
                 <p>Hi ${attendeeName},</p>
                 <p>Thank you for reaching out! We received your message and appreciate your interest in working together.</p>
+              </div>
+
+              <div class="divider"></div>
+
+              <div class="section">
+                <h3>Your Inquiry Details</h3>
+                <div class="data-box">
+                  <div class="data-label">Name</div>
+                  <div class="data-value">${contactData?.firstName || ''} ${contactData?.lastName || ''}</div>
+                </div>
+                <div class="data-box">
+                  <div class="data-label">Email</div>
+                  <div class="data-value">${contactData?.email || ''}</div>
+                </div>
+                <div class="data-box">
+                  <div class="data-label">Services Interested In</div>
+                  <div class="data-value">${servicesText}</div>
+                </div>
+                <div class="data-box">
+                  <div class="data-label">Message</div>
+                  <div class="data-value">${messageText}</div>
+                </div>
               </div>
 
               <div class="divider"></div>
