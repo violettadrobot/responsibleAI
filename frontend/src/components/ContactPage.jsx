@@ -11,7 +11,7 @@ export default function ContactPage() {
     message: ''
   })
 
-  const [formStatus, setFormStatus] = useState('idle') // idle, loading, success, error
+  const [formStatus, setFormStatus] = useState('idle')
 
   const serviceOptions = [
     'Public Speaking',
@@ -20,8 +20,9 @@ export default function ContactPage() {
     'General Inquiry'
   ]
 
-  const handleFormChange = (e) => {
+  const handleChange = (e) => {
     const { name, value, type, checked } = e.target
+
     if (type === 'checkbox') {
       setFormData(prev => ({
         ...prev,
@@ -37,16 +38,14 @@ export default function ContactPage() {
     }
   }
 
-  const handleFormSubmit = async (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
     setFormStatus('loading')
 
     try {
       const response = await fetch('https://responsibleai-jpk1.onrender.com/api/contact', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData)
       })
 
@@ -59,9 +58,7 @@ export default function ContactPage() {
           services: [],
           message: ''
         })
-        setTimeout(() => {
-          setFormStatus('idle')
-        }, 3000)
+        setTimeout(() => setFormStatus('idle'), 4000)
       } else {
         setFormStatus('error')
       }
@@ -73,108 +70,95 @@ export default function ContactPage() {
 
   return (
     <div className="contact-page-container">
-      {/* Header - Full Width */}
       <section className="contact-header">
         <h1>Let's work together</h1>
         <p>Fill out the form below and we'll be in touch soon.</p>
       </section>
 
-      {/* Main Section - 50/50 Split */}
       <section className="contact-main">
-        {/* Left Half - Image */}
         <div className="contact-left">
           <img src="/images/Image (73).jpg" alt="Violetta Drobot" className="contact-headshot" />
         </div>
 
-        {/* Right Half - Form */}
         <div className="contact-right">
-          <div className="form-container">
-            {/* Form */}
-            <form onSubmit={handleFormSubmit} className="contact-form">
-              <div className="form-group-row">
-                <div className="form-group">
-                  <label>First Name <span className="required">(required)</span></label>
-                  <input
-                    type="text"
-                    name="firstName"
-                    value={formData.firstName}
-                    onChange={handleFormChange}
-                    required
-                  />
-                </div>
-                <div className="form-group">
-                  <label>Last Name <span className="required">(required)</span></label>
-                  <input
-                    type="text"
-                    name="lastName"
-                    value={formData.lastName}
-                    onChange={handleFormChange}
-                    required
-                  />
-                </div>
-              </div>
-
+          <form onSubmit={handleSubmit} className="contact-form">
+            <div className="form-row">
               <div className="form-group">
-                <label>Email <span className="required">(required)</span></label>
+                <label>First Name</label>
                 <input
-                  type="email"
-                  name="email"
-                  value={formData.email}
-                  onChange={handleFormChange}
-                  required
+                  type="text"
+                  name="firstName"
+                  value={formData.firstName}
+                  onChange={handleChange}
+                  placeholder="John"
                 />
               </div>
-
               <div className="form-group">
-                <label className="checkbox-label">What services are you interested in?</label>
-                <div className="checkbox-group">
-                  {serviceOptions.map(service => (
-                    <div key={service} className="checkbox-item">
-                      <input
-                        type="checkbox"
-                        id={service}
-                        name="services"
-                        value={service}
-                        checked={formData.services.includes(service)}
-                        onChange={handleFormChange}
-                      />
-                      <label htmlFor={service}>{service}</label>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              <div className="form-group">
-                <label>Message <span className="required">(required)</span></label>
-                <textarea
-                  name="message"
-                  value={formData.message}
-                  onChange={handleFormChange}
-                  rows="6"
-                  required
+                <label>Last Name</label>
+                <input
+                  type="text"
+                  name="lastName"
+                  value={formData.lastName}
+                  onChange={handleChange}
+                  placeholder="Doe"
                 />
               </div>
+            </div>
 
-              <button
-                type="submit"
-                className="contact-submit-button"
-                disabled={formStatus === 'loading'}
-              >
-                {formStatus === 'loading' ? 'Sending...' : 'Send Message'}
-              </button>
+            <div className="form-group">
+              <label>Email</label>
+              <input
+                type="email"
+                name="email"
+                value={formData.email}
+                onChange={handleChange}
+                placeholder="john@example.com"
+              />
+            </div>
 
-              {formStatus === 'success' && (
-                <p className="form-success">Thank you! We'll get back to you soon.</p>
-              )}
-              {formStatus === 'error' && (
-                <p className="form-error">Error sending message. Please try again.</p>
-              )}
-            </form>
-          </div>
+            <div className="form-group">
+              <label>Services Interested In</label>
+              <div className="checkbox-container">
+                {serviceOptions.map(service => (
+                  <label key={service} className="checkbox-label">
+                    <input
+                      type="checkbox"
+                      name="services"
+                      value={service}
+                      checked={formData.services.includes(service)}
+                      onChange={handleChange}
+                    />
+                    <span>{service}</span>
+                  </label>
+                ))}
+              </div>
+            </div>
+
+            <div className="form-group">
+              <label>Message</label>
+              <textarea
+                name="message"
+                value={formData.message}
+                onChange={handleChange}
+                placeholder="Tell us more about your inquiry..."
+                rows="5"
+              />
+            </div>
+
+            <button type="submit" disabled={formStatus === 'loading'}>
+              {formStatus === 'loading' ? 'Sending...' : 'Send Message'}
+            </button>
+
+            {formStatus === 'success' && (
+              <p className="success-message">Thank you! We'll get back to you soon.</p>
+            )}
+            {formStatus === 'error' && (
+              <p className="error-message">Error sending message. Please try again.</p>
+            )}
+          </form>
         </div>
       </section>
 
-      {/* Navigation */}
       <nav className="navbar">
         <div className="nav-content">
           <div className="nav-links">
