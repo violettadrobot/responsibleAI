@@ -1,4 +1,14 @@
 #root {
   display: flex;
   min-height: 100vh;
+  background: transparent;
+  width: 100%;
+}
+
+body {
+  background: transparent !important;
+}
+
+* {
+  background-clip: padding-box !important;
 }
