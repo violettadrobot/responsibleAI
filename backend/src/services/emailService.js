@@ -33,9 +33,10 @@ DTSTAMP:${new Date().toISOString().replace(/[-:]/g, '').split('.')[0]}Z
 DTSTART;TZID=America/New_York:20260624T120000
 DTEND;TZID=America/New_York:20260624T130000
 SUMMARY:Practical AI for HR 101: Prompt Engineering
-DESCRIPTION:Learn how to write prompts that actually work.\\n\\nTeams Link: ${teamsLink}\\n\\nTime: 12:00 PM - 1:00 PM Eastern Time
-LOCATION:Microsoft Teams (Virtual)
-ORGANIZER;CN=Violetta Drobot:mailto:violettadrobot@gmail.com
+DESCRIPTION:Learn how to write prompts that actually work - save 10+ hours per week.\\n\\nJoin via Teams: ${teamsLink}\\n\\nTime: 12:00 PM - 1:00 PM Eastern Time (EDT)
+LOCATION:${teamsLink}
+ORGANIZER;CN=Violetta Drobot:mailto:violetta@violettadrobot.com
+URL:${teamsLink}
 STATUS:CONFIRMED
 SEQUENCE:0
 END:VEVENT
