@@ -186,35 +186,39 @@ export const sendConfirmationEmail = async (attendeeName, email, teamsLink, emai
           <div class="content">
             <div class="section">
               <p>Hello ${attendeeName},</p>
-              <p>Thank you for registering for Practical AI for HR 101. We're excited to have you join us.</p>
+              <p>Thank you for registering for Practical AI for HR 101. I am excited to have you join us as we explore how to write prompts that actually work and save you 10+ hours per week.</p>
             </div>
 
             <div class="section">
               <h3>Workshop Details</h3>
-              <p><strong>Date & Time:</strong> June 24, 2026 • 12:00 PM – 1:00 PM Eastern Time</p>
+              <p><strong>Title:</strong> Practical AI for HR 101: Prompt Engineering</p>
               <p><strong>Format:</strong> Virtual via Microsoft Teams</p>
-              <p><strong>Duration:</strong> 60 minutes (45 min material + 15 min Q&A)</p>
+              <p><strong>Date & Time:</strong> June 24, 2026 • 12:00 PM – 1:00 PM Eastern Time</p>
+              <p><strong>Duration:</strong> 60 minutes (45 minutes of material + 15 minutes Q&A)</p>
             </div>
 
             <div class="section">
               <h3>What You'll Learn</h3>
               <ul>
                 <li>Why most AI prompts fail in HR (and how to fix them)</li>
-                <li>Where HR leaders lose the most time</li>
+                <li>Where HR leaders lose the most time: hiring decisions, compensation analysis, survey synthesis</li>
                 <li>How to build prompts that work the first time</li>
               </ul>
             </div>
 
-            <div class="section" style="background-color: rgba(0, 212, 255, 0.15); padding: 15px; border-radius: 6px; border-left: 4px solid #00d4ff; margin: 15px 0;">
-              <h3 style="margin-top: 0; margin-bottom: 10px; color: #ffffff;">Join the Workshop</h3>
+            <div class="section" style="background-color: rgba(0, 212, 255, 0.15); padding: 20px; border-radius: 6px; border-left: 4px solid #00d4ff; margin: 30px 0;">
+              <h3 style="margin-top: 0; color: #ffffff;">Join the Workshop</h3>
+              <p style="color: #ffffff; font-size: 15px; margin-bottom: 20px; font-weight: 500;">Click the button below to join the Microsoft Teams meeting:</p>
               <center>
                 <a href="${teamsLink}" class="button">Join Teams Meeting</a>
               </center>
-              <p style="font-size: 12px; color: #b8c5d6; margin: 10px 0 5px 0;">Or paste this link: <a href="${teamsLink}" style="color: #00d4ff; text-decoration: none; word-break: break-all;">${teamsLink}</a></p>
+              <p style="font-size: 14px; color: #ffffff; margin-top: 20px; margin-bottom: 8px; font-weight: 500;">Or copy and paste this link in your browser:</p>
+              <p style="font-size: 11px; color: #b8c5d6; margin-top: 15px; margin-bottom: 8px;">Full link:</p>
+              <a href="${teamsLink}" style="display: block; font-size: 12px; color: #00d4ff; background-color: rgba(0, 0, 0, 0.5); padding: 12px; border-radius: 4px; border: 1px solid #00d4ff; text-decoration: none; font-family: 'Courier New', monospace; word-break: break-all; line-height: 1.4;">${teamsLink}</a>
             </div>
 
             <div class="section">
-              <p style="margin: 10px 0; font-size: 14px;">Questions? Reach out at <strong>violetta@violettadrobot.com</strong> or <a href="https://www.linkedin.com/in/violetta-drobot" style="color: #00d4ff; text-decoration: none;">LinkedIn</a></p>
+              <p>If you have any questions or need technical support before the workshop, please reach out to me directly at <strong>violetta@violettadrobot.com</strong> or <a href="https://www.linkedin.com/in/violetta-drobot" style="color: #00d4ff; text-decoration: none;">LinkedIn</a></p>
             </div>
 
             <div class="footer">
