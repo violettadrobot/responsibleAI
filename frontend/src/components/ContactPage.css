@@ -2,7 +2,7 @@
 
 .contact-page-container {
   min-height: 100vh;
-  background: linear-gradient(135deg, #1a2844 0%, #0f172a 100%);
+  background: linear-gradient(135deg, #2d4a6f 0%, #1a3052 100%);
   color: #ffffff;
 }
 
@@ -99,7 +99,7 @@
 /* Contact Form Section */
 .contact-form-section {
   padding: 80px 40px;
-  background-color: #0f172a;
+  background-color: transparent;
 }
 
 .contact-form-wrapper {
