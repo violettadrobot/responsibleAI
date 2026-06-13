@@ -199,9 +199,6 @@ export const sendConfirmationEmail = async (attendeeName, email, teamsLink, emai
         </div>
       </body>
     </html>
-  `;
-
-    </html>
     `;
   }
 
