@@ -5,6 +5,12 @@ export default defineConfig({
   plugins: [react()],
   server: {
     port: 5173,
-    open: true
+    open: true,
+    middlewareMode: false
+  },
+  preview: {
+    host: '0.0.0.0',
+    port: 3000,
+    allowedHosts: ['responsibleai-1.onrender.com', 'violettadrobot.com', 'localhost']
   }
 })
