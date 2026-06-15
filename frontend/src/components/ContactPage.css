@@ -231,6 +231,10 @@
 }
 
 @media (max-width: 768px) {
+  .contact-page-container {
+    min-height: auto;
+  }
+
   .contact-header {
     padding: 40px 20px 20px;
   }
@@ -238,7 +242,7 @@
   .contact-main {
     grid-template-columns: 1fr;
     padding: 20px;
-    padding-bottom: 80px;
+    padding-bottom: 20px;
   }
 
   .contact-header h1 {
