@@ -8,6 +8,9 @@
   background-attachment: fixed;
   color: #ffffff;
   position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 
@@ -228,9 +231,14 @@
 }
 
 @media (max-width: 768px) {
+  .contact-header {
+    padding: 40px 20px 20px;
+  }
+
   .contact-main {
     grid-template-columns: 1fr;
     padding: 20px;
+    padding-bottom: 120px;
   }
 
   .contact-header h1 {
