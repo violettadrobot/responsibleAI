@@ -102,7 +102,8 @@ export default function HomePage() {
         </div>
       </div>
 
-      {/* Upcoming Workshops Section - Full Page with Carousel Background */}
+      {/* Upcoming Workshops Section - Hidden for now, uncomment when you have events */}
+      {/*
       <section
         className="workshops-section"
         style={{
@@ -127,6 +128,7 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+      */}
 
       {/* Registration Page Section */}
       {showRegistration && (
