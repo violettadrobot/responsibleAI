@@ -102,7 +102,8 @@ export default function HomePage() {
         </div>
       </div>
 
-      {/* Upcoming Workshops Section - Full Page with Carousel Background */}
+      {/* Upcoming Workshops Section - Hidden for now, uncomment when you have events */}
+      {/*
       <section
         className="workshops-section"
         style={{
@@ -114,7 +115,7 @@ export default function HomePage() {
           <h2 className="workshops-heading">Upcoming Workshops</h2>
           <div className="workshop-card">
             <h3>Practical AI for HR 101: Prompt Engineering</h3>
-            <p className="workshop-date">June 24, 2026 • 12:00 PM - 1:00 PM EST</p>
+            <p className="workshop-date">July 25, 2026 • 12:00 PM - 1:00 PM EST</p>
             <p className="workshop-description">
               Learn how to write prompts that actually work—so you save 10+ hours per week without wasting time on bad results.
             </p>
@@ -127,6 +128,7 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+      */}
 
       {/* Registration Page Section */}
       {showRegistration && (
